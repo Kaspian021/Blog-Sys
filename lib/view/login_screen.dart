@@ -1,3 +1,4 @@
+import 'package:blog_sys/controller/Animation_controller/login_animation_screen.dart';
 import 'package:blog_sys/controller/login_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
@@ -126,12 +127,12 @@ class LoginScreenView extends StatefulWidget {
 class _LoginScreenViewState extends State<LoginScreenView> with SingleTickerProviderStateMixin {
   
   //animationController
-  late AnimationController animationController;
+  
 
   @override
   void initState() {
-    animationController= AnimationController(vsync: this,duration: Duration(seconds: 1));
-    animationController.forward();
+    LoginAnimationScreen.animationController= AnimationController(vsync: this,duration: Duration(seconds: 1));
+    LoginAnimationScreen.animationController.forward();
     super.initState();
   }
   
@@ -262,7 +263,7 @@ class _LoginScreenViewState extends State<LoginScreenView> with SingleTickerProv
                   Text('Or sign in with'),
                 ],
               );
-            }, animation: animationController,
+            }, animation: LoginAnimationScreen.animationController,
           ),
         ),
       ),
@@ -271,7 +272,7 @@ class _LoginScreenViewState extends State<LoginScreenView> with SingleTickerProv
   @override
   void dispose() {
     
-    animationController.dispose();
+    LoginAnimationScreen.animationController.dispose();
 
     super.dispose();
   }

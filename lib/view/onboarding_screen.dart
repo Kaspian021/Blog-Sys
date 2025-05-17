@@ -1,3 +1,4 @@
+import 'package:blog_sys/controller/Animation_controller/onbording_animation_screen.dart';
 import 'package:blog_sys/controller/route_controller/routs_name.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -97,37 +98,34 @@ class OnboardingPage extends StatefulWidget {
 
 class _OnboardingPageState extends State<OnboardingPage>
     with SingleTickerProviderStateMixin {
-  late AnimationController controller;
-  late Animation<Offset> photoAnimationTopLeft;
-  late Animation<Offset> photoAnimationTopRight;
-  late Animation<Offset> photoAnimationBottomLeft;
-  late Animation<Offset> photoAnimationBottomRight;
+
 
   @override
   void initState() {
-    controller = AnimationController(
+    //Animations_controller
+    OnbordingAnimationScreen.controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
     );
-
-    photoAnimationTopLeft = Tween<Offset>(
+    
+    OnbordingAnimationScreen.photoAnimationTopLeft = Tween<Offset>(
       begin: Offset(.5, -1),
       end: Offset(0, 0),
-    ).animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
-    photoAnimationTopRight = Tween<Offset>(
+    ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
+    OnbordingAnimationScreen.photoAnimationTopRight = Tween<Offset>(
       begin: Offset(1, 0),
       end: Offset(0, 0),
-    ).animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
-    photoAnimationBottomLeft = Tween<Offset>(
+    ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
+    OnbordingAnimationScreen.photoAnimationBottomLeft = Tween<Offset>(
       begin: Offset(-1, 0),
       end: Offset(0, 0),
-    ).animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
-    photoAnimationBottomRight = Tween<Offset>(
+    ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
+    OnbordingAnimationScreen.photoAnimationBottomRight = Tween<Offset>(
       begin: Offset(-.5, 1),
       end: Offset(0, 0),
-    ).animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
+    ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
 
-    controller.forward();
+    OnbordingAnimationScreen.controller.forward();
 
     super.initState();
   }
@@ -148,7 +146,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                 Row(
                   children: [
                     SlideTransition(
-                      position: photoAnimationTopLeft,
+                      position: OnbordingAnimationScreen.photoAnimationTopLeft,
                       child: Container(
                         height: Get.height / 5.1,
                         width: Get.width / 4,
@@ -170,7 +168,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                     ),
                     SizedBox(width: 10),
                     SlideTransition(
-                      position: photoAnimationTopRight,
+                      position: OnbordingAnimationScreen.photoAnimationTopRight,
                       child: Container(
                         height: Get.height / 5.1,
                         width: Get.width / 1.97,
@@ -196,7 +194,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                 Row(
                   children: [
                     SlideTransition(
-                      position: photoAnimationBottomLeft,
+                      position: OnbordingAnimationScreen.photoAnimationBottomLeft,
                       child: Container(
                         height: Get.height / 5.1,
                         width: Get.width / 1.97,
@@ -218,7 +216,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                     ),
                     SizedBox(width: 10),
                     SlideTransition(
-                      position: photoAnimationBottomRight,
+                      position: OnbordingAnimationScreen.photoAnimationBottomRight,
                       child: Container(
                         height: Get.height / 5.1,
                         width: Get.width / 4,
@@ -318,7 +316,7 @@ class _OnboardingPageState extends State<OnboardingPage>
 
   @override
   void dispose() {
-    controller.dispose();
+    OnbordingAnimationScreen.controller.dispose();
 
     super.dispose();
   }
