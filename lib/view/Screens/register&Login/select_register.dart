@@ -16,6 +16,12 @@ class SelectRegister extends StatefulWidget {
 
 class _SelectRegisterState extends State<SelectRegister>
     with SingleTickerProviderStateMixin {
+
+  //controll_Screen    
+  RxBool loginSelect = true.obs;
+  RxBool signUpSelect = false.obs;
+
+  //Controller_Register
   var loginController = Get.put(LoginController());
   var signUpController= Get.put(RegisterController());
   //dividerAniamtion
@@ -31,7 +37,7 @@ class _SelectRegisterState extends State<SelectRegister>
 
     animationDivider = Tween<Offset>(
       begin: Offset(-.2, 0),
-      end: Offset(.2, 0),
+      end: Offset(.18, 0),
     ).animate(CurvedAnimation(parent: controller, curve: Curves.elasticInOut));
 
     super.initState();
@@ -76,11 +82,11 @@ class _SelectRegisterState extends State<SelectRegister>
                                 GestureDetector(
                                   onTap: () {
                                     
-                                      if (!loginController.loginSelect.value &&
-                                          loginController.signUpSelect.value) {
-                                        loginController.loginSelect.value =
+                                      if (!loginSelect.value &&
+                                          signUpSelect.value) {
+                                        loginSelect.value =
                                             true;
-                                        loginController.signUpSelect.value =
+                                        signUpSelect.value =
                                             false;
                                             controller.reverse();
                                       }
@@ -94,7 +100,7 @@ class _SelectRegisterState extends State<SelectRegister>
                                       fontFamily: 'Avenir',
                                       fontWeight: FontWeight.w700,
                                       color:
-                                          loginController.loginSelect.value
+                                          loginSelect.value
                                               ? Colors.white
                                               : Colors.white30,
                                       fontSize: 16,
@@ -104,12 +110,12 @@ class _SelectRegisterState extends State<SelectRegister>
                                 GestureDetector(
                                   onTap: () {
                                     
-                                      if (!loginController.signUpSelect.value &&
-                                          loginController.loginSelect.value) {
+                                      if (!signUpSelect.value &&
+                                          loginSelect.value) {
                                         
-                                        loginController.signUpSelect.value =
+                                        signUpSelect.value =
                                             true;
-                                        loginController.loginSelect.value =
+                                        loginSelect.value =
                                             false;
                                             controller.forward();
                                       }
@@ -122,7 +128,7 @@ class _SelectRegisterState extends State<SelectRegister>
                                       fontFamily: 'Avenir',
                                       fontWeight: FontWeight.w700,
                                       color:
-                                          loginController.signUpSelect.value
+                                          signUpSelect.value
                                               ? Colors.white
                                               : Colors.white30,
                                       fontSize: 16,
@@ -148,7 +154,7 @@ class _SelectRegisterState extends State<SelectRegister>
                     //login_screen|| SignUpScreen
                     Obx(
                       () =>
-                          loginController.loginSelect.value
+                          loginSelect.value
                               ? LoginScreen(textStyle: textStyle)
                               : SignUpScreen(textStyle: textStyle),
                     ),
@@ -160,5 +166,10 @@ class _SelectRegisterState extends State<SelectRegister>
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }

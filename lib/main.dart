@@ -1,11 +1,8 @@
-
-
 import 'package:blog_sys/controller/login_controller.dart';
 import 'package:blog_sys/controller/route_controller/routs.dart';
 import 'package:blog_sys/view/Screens/StartScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -24,43 +21,58 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
 
       theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: WidgetStateColor.resolveWith((callback) {
+              if (callback.contains(WidgetState.pressed)) {
+                return Colors.black;
+              }
+              return Colors.blue;
+            }),
+            animationDuration: Duration(seconds: 1),
+            shape: WidgetStatePropertyAll(
+              ContinuousRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+            ),
+            
+          ),
+        ),
+        
         textTheme: TextTheme(
-
           bodyLarge: TextStyle(
             fontFamily: 'Avenir',
             fontWeight: FontWeight.w700,
             color: Colors.black,
-            fontSize: 22
+            fontSize: 22,
           ),
           bodySmall: TextStyle(
             fontFamily: 'Avenir',
             fontWeight: FontWeight.w300,
             color: Colors.black,
-            fontSize: 12
+            fontSize: 12,
           ),
           titleLarge: TextStyle(
             fontFamily: 'Avenir',
             fontWeight: FontWeight.w700,
             color: Colors.white,
-            fontSize: 16
-          // ),
-          // bodyLarge: TextStyle(
-          //   fontFamily: 'Avenir',
-          //   fontWeight: FontWeight.w700,
-          //   color: Colors.black,
-          //   fontSize: 24
-          // ),
-          // bodyLarge: TextStyle(
-          //   fontFamily: 'Avenir',
-          //   fontWeight: FontWeight.w700,
-          //   color: Colors.black,
-          //   fontSize: 24
-          // ),
-        )
+            fontSize: 16,
+            // ),
+            // bodyLarge: TextStyle(
+            //   fontFamily: 'Avenir',
+            //   fontWeight: FontWeight.w700,
+            //   color: Colors.black,
+            //   fontSize: 24
+            // ),
+            // bodyLarge: TextStyle(
+            //   fontFamily: 'Avenir',
+            //   fontWeight: FontWeight.w700,
+            //   color: Colors.black,
+            //   fontSize: 24
+            // ),
+          ),
+        ),
       ),
-      )
     );
   }
 }
-
-

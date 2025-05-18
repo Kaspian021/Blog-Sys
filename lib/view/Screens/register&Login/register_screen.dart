@@ -62,102 +62,140 @@ class _SignUpScreenState extends State<SignUpScreen>
             padding: const EdgeInsets.all(40.0),
             child: AnimatedBuilder(
               builder: (context, widgets) {
-                return Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Welcome back',
-                        style: widget.textStyle.bodyLarge,
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Sign in with your account',
-                        style: widget.textStyle.bodySmall,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    TextField(
-                      style: widget.textStyle.titleSmall,
-                      cursorHeight: 18,
-                      cursorWidth: 1,
-                      expands: false,
-                      controller: controller.textUserNameEditingController,
-                      decoration: InputDecoration(
-                        labelStyle: widget.textStyle.titleMedium,
-                        label: Text('Username'),
-                        fillColor: Colors.black,
-                        hoverColor: Colors.black,
-                        contentPadding: EdgeInsets.only(left: 2),
-                        hintFadeDuration: Duration(seconds: 1),
-                      ),
-                    ),
-                    SizedBox(height: 35),
-                    TextField(
-                      obscureText: controller.obscureTextBool.value,
-                      style: widget.textStyle.titleSmall,
-                      cursorHeight: 18,
-                      cursorWidth: 1,
-                      expands: false,
-                      controller: controller.textPasswordUPEditingController,
-                      decoration: InputDecoration(
-                        labelStyle: widget.textStyle.titleMedium,
-                        label: Text('Password'),
-                        fillColor: Colors.black,
-                        hoverColor: Colors.black,
-                        contentPadding: EdgeInsets.only(left: 2),
-                        hintFadeDuration: Duration(seconds: 1),
-        
-                        suffixIcon: InkWell(
-                          onTap: () {
-                            controller.obscureTextBool.value
-                                ? controller.obscureTextBool.value = false
-                                : controller.obscureTextBool.value = true;
-                          },
-                          child: Text(
-                            controller.obscureTextBool.value ? 'show' : 'Hide',
-                          ),
+                return Obx(
+                  ()=> Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Create an account',
+                          style: widget.textStyle.bodyLarge,
                         ),
                       ),
-                    ),
-                    SizedBox(height: 30),
-                    ElevatedButton(
-                      onPressed: () {},
-        
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateColor.resolveWith((callback) {
-                          if (callback.contains(WidgetState.pressed)) {
-                            return Colors.black;
+                      SizedBox(height: 8),
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: Text(
+                          'Sign Up with your Email',
+                          style: widget.textStyle.bodySmall,
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      //Username
+                      TextField(
+                        onChanged: (value) {
+                          if(value.isNotEmpty){
+                            controller.username.value=true;
+                          }else{
+                            controller.username.value=false;
                           }
-                          return Colors.blue;
-                        }),
-                        animationDuration: Duration(seconds: 1),
-                        shape: WidgetStatePropertyAll(
-                          ContinuousRectangleBorder(
-                            borderRadius: BorderRadius.circular(25),
-                          ),
-                        ),
-                        fixedSize: WidgetStatePropertyAll(
-                          Size(Get.width / 1.2, Get.height / 13.53),
+                        },
+                        style: widget.textStyle.titleSmall,
+                        cursorHeight: 18,
+                        cursorWidth: 1,
+                        expands: false,
+                        controller: controller.textUserNameEditingController,
+                        decoration: InputDecoration(
+                          icon: controller.username.value? Icon(Icons.check,color: Colors.green,) :Icon(Icons.person),
+                          labelStyle: widget.textStyle.titleMedium,
+                          label: Text('Username'),
+                          fillColor: Colors.black,
+                          hoverColor: Colors.black,
+                          contentPadding: EdgeInsets.only(left: 2),
+                          hintFadeDuration: Duration(seconds: 1),
                         ),
                       ),
-                      child: Text('LOGIN', style: widget.textStyle.titleLarge),
-                    ),
-                    SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Forgot your password?'),
-                        SizedBox(width: 10),
-                        Text('Reset here'),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Text('Or sign in with'),
-                  ],
+                      SizedBox(height: 20),
+                      //Email
+                      TextField(
+                        onChanged: (value) {
+                          
+                          if(value.isEmail){
+
+                            controller.isEmailOk.value=true;
+                          }else{
+                            controller.isEmailOk.value=false;
+                          }
+
+                        },
+                        style: widget.textStyle.titleSmall,
+                        cursorHeight: 18,
+                        cursorWidth: 1,
+                        expands: false,
+                        controller: controller.textEmailEditingController,
+                        decoration: InputDecoration(
+                          icon: controller.isEmailOk.value? Icon(Icons.check,color: Colors.green,): Icon(Icons.email),
+                          labelStyle: widget.textStyle.titleMedium,
+                          label: Text('Email'),
+                          fillColor: Colors.black,
+                          hoverColor: Colors.black,
+                          contentPadding: EdgeInsets.only(left: 2),
+                          hintFadeDuration: Duration(seconds: 1),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      //password
+                      TextField(
+                        onChanged: (value) {
+                          
+                          if(value.isPassport){
+
+                            controller.isPassportOk.value=true;
+                          }else{
+                            controller.isPassportOk.value=false;
+                          }
+
+                        },
+                        
+                        obscureText: controller.obscureTextBool.value,
+                        style: widget.textStyle.titleSmall,
+                        cursorHeight: 18,
+                        cursorWidth: 1,
+                        expands: false,
+                        controller: controller.textPasswordUPEditingController,
+                        decoration: InputDecoration(
+                          icon: controller.isPassportOk.value? Icon(Icons.check,color: Colors.green,): Icon(Icons.lock),
+                          labelStyle: widget.textStyle.titleMedium,
+                          label: Text('Password'),
+                          fillColor: Colors.black,
+                          hoverColor: Colors.black,
+                          contentPadding: EdgeInsets.only(left: 2),
+                          hintFadeDuration: Duration(seconds: 1),
+                          
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              controller.obscureTextBool.value
+                                  ? controller.obscureTextBool.value = false
+                                  : controller.obscureTextBool.value = true;
+                            },
+                            child: Text(
+                              controller.obscureTextBool.value ? 'show' : 'Hide',
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      //Submit_Button
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          fixedSize: WidgetStatePropertyAll(
+                            Size(Get.width / 1.2, Get.height / 13.53),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Text('CREATE', style: widget.textStyle.titleLarge),
+                      ),
+                      
+                      
+                      SizedBox(height: 30),
+                      Text('Or sign in with'),
+                      Row(
+                        children: [
+
+                        ],
+                      )
+                    ],
+                  ),
                 );
               },
               animation: SignUpAnimationScreen.animationController,
