@@ -1,15 +1,24 @@
 import 'package:blog_sys/controller/login_controller.dart';
 import 'package:blog_sys/controller/route_controller/routs.dart';
 import 'package:blog_sys/view/Screens/StartScreen/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main()async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
+
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   // This widget is the root of your application.
   @override

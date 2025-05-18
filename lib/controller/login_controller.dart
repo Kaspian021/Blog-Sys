@@ -2,6 +2,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+
 class LoginController extends GetxController {
 
   RxBool obscureTextBool = true.obs;
@@ -13,7 +14,7 @@ class LoginController extends GetxController {
   TextEditingController textPasswordUPEditingController = TextEditingController();
 
   
-  
+
   
   
 

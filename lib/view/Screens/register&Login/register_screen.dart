@@ -182,7 +182,11 @@ class _SignUpScreenState extends State<SignUpScreen>
                             Size(Get.width / 1.2, Get.height / 13.53),
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+
+                          //create_account
+                          controller.signUpWithEmailAndPassword();
+                        },
                         child: Text('CREATE', style: widget.textStyle.titleLarge),
                       ),
                       
