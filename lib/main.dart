@@ -2,7 +2,7 @@
 
 import 'package:blog_sys/controller/login_controller.dart';
 import 'package:blog_sys/controller/route_controller/routs.dart';
-import 'package:blog_sys/view/splash_screen.dart';
+import 'package:blog_sys/view/Screens/StartScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

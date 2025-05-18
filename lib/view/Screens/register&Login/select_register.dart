@@ -1,0 +1,164 @@
+import 'package:blog_sys/controller/login_controller.dart';
+import 'package:blog_sys/controller/register_controller.dart';
+import 'package:blog_sys/gen/assets.gen.dart';
+import 'package:blog_sys/view/Screens/register&Login/login_screen.dart';
+import 'package:blog_sys/view/Screens/register&Login/register_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+// ignore: must_be_immutable
+class SelectRegister extends StatefulWidget {
+  const SelectRegister({super.key});
+
+  @override
+  State<SelectRegister> createState() => _SelectRegisterState();
+}
+
+class _SelectRegisterState extends State<SelectRegister>
+    with SingleTickerProviderStateMixin {
+  var loginController = Get.put(LoginController());
+  var signUpController= Get.put(RegisterController());
+  //dividerAniamtion
+  late AnimationController controller;
+  late Animation<Offset> animationDivider;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
+
+    animationDivider = Tween<Offset>(
+      begin: Offset(-.2, 0),
+      end: Offset(.2, 0),
+    ).animate(CurvedAnimation(parent: controller, curve: Curves.elasticInOut));
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var textStyle = Theme.of(context).textTheme;
+
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(height: 50),
+              Image.asset(Assets.images.logoBlog.path, scale: 2.5), //Image_Logo
+              SizedBox(height: 30),
+              //container_Login
+              Container(
+                height: Get.height / 1.2,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 24, 27, 211),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    topRight: Radius.circular(25),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    //select_login||signUP
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Obx(
+                        () => Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    
+                                      if (!loginController.loginSelect.value &&
+                                          loginController.signUpSelect.value) {
+                                        loginController.loginSelect.value =
+                                            true;
+                                        loginController.signUpSelect.value =
+                                            false;
+                                            controller.reverse();
+                                      }
+                                      
+                                    
+                                  },
+
+                                  child: Text(
+                                    'LOGIN',
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontWeight: FontWeight.w700,
+                                      color:
+                                          loginController.loginSelect.value
+                                              ? Colors.white
+                                              : Colors.white30,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    
+                                      if (!loginController.signUpSelect.value &&
+                                          loginController.loginSelect.value) {
+                                        
+                                        loginController.signUpSelect.value =
+                                            true;
+                                        loginController.loginSelect.value =
+                                            false;
+                                            controller.forward();
+                                      }
+                                      
+                                    
+                                  },
+                                  child: Text(
+                                    'SIGN UP',
+                                    style: TextStyle(
+                                      fontFamily: 'Avenir',
+                                      fontWeight: FontWeight.w700,
+                                      color:
+                                          loginController.signUpSelect.value
+                                              ? Colors.white
+                                              : Colors.white30,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SlideTransition(
+                              position: animationDivider,
+                              child: Divider(
+                                thickness: 2,
+                                color: Colors.white,
+                                indent: Get.width / 2.7,
+                                endIndent: Get.width / 2.7,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    //login_screen|| SignUpScreen
+                    Obx(
+                      () =>
+                          loginController.loginSelect.value
+                              ? LoginScreen(textStyle: textStyle)
+                              : SignUpScreen(textStyle: textStyle),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -4,10 +4,12 @@ import 'package:get/get.dart';
 
 class LoginController extends GetxController {
 
-  TextEditingController textLoginEditingController = TextEditingController();
-  TextEditingController textSignUPEditingController = TextEditingController();
+  TextEditingController textUserNameEditingController = TextEditingController();
+  TextEditingController textPasswordUPEditingController = TextEditingController();
 
-
+  RxBool loginSelect = true.obs;
+  RxBool signUpSelect = false.obs;
+  RxBool obscureTextBool = true.obs;
   
   
 

@@ -1,6 +1,6 @@
 
 import 'package:blog_sys/gen/assets.gen.dart';
-import 'package:blog_sys/view/onboarding_screen.dart';
+import 'package:blog_sys/view/Screens/StartScreen/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -58,5 +58,10 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         ),
       ),
     );
+  }
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 }

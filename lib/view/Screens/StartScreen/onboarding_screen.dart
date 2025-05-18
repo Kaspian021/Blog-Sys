@@ -19,9 +19,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<Widget> _onboardingPages = [
     // Add your onboarding page widgets here
     OnboardingPage(
-      title: "Explore PC Powerhouse Components!",
+      title: "🧠 Unlock the World of PC Hardware!",
       description:
-          "Get the latest news and insights on cutting-edge Motherboards, CPUs, and Graphics Cards. Your guide to building and upgrading! 🚀",
+          "Discover the newest Motherboards, CPUs, and Graphics Cards hitting the market. Deep dives and breaking news, all in one place. 💻",
       imageAsset: [
         Assets.images.cpu.path,
         Assets.images.graphic.path,
@@ -68,6 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               currentPage = page;
             });
           },
+          padEnds: true,
           scrollDirection: Axis.horizontal,
           reverse: false,
           physics: AlwaysScrollableScrollPhysics(),
@@ -260,12 +261,12 @@ class _OnboardingPageState extends State<OnboardingPage>
                 child: Column(
                   children: [
                     Text(
-                      '🧠 Unlock the World of PC Hardware!',
+                      widget.title,
                       style: textstyle.bodyLarge,
                     ),
                     SizedBox(height: 15),
                     Text(
-                      'Discover the newest Motherboards, CPUs, and Graphics Cards hitting the market. Deep dives and breaking news, all in one place. 💻',
+                      widget.description,
                       style: textstyle.bodySmall,
                     ),
                     SizedBox(height: 25,),
@@ -315,9 +316,11 @@ class _OnboardingPageState extends State<OnboardingPage>
   }
 
   @override
-  void dispose() {
+  void deactivate() {
+    
     OnbordingAnimationScreen.controller.dispose();
 
-    super.dispose();
+    super.deactivate();
   }
+  
 }
