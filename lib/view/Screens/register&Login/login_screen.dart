@@ -22,11 +22,11 @@ class _LoginScreenState extends State<LoginScreen>
     //animationController
     LoginAnimationScreen.animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
     LoginAnimationScreen.animationContainerLogin = Tween<Offset>(
-      begin: Offset(0, 1),
-      end: Offset(0, 0),
+      begin: const Offset(0, 1),
+      end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(
         parent: LoginAnimationScreen.animationController,
@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen>
         child: Container(
           width: double.infinity,
           height: Get.height / 2.16,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25),
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen>
                           style: widget.textStyle.bodyLarge,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -76,44 +76,45 @@ class _LoginScreenState extends State<LoginScreen>
                           style: widget.textStyle.bodySmall,
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
+                      //Email
                       TextField(
                         onChanged: (value) {
-                          if(value.isNotEmpty){
-                            controller.username.value=true;
-                          }else{
-                            controller.username.value=false;
+                          if (value.isEmail) {
+                            controller.isEmailOk.value = true;
+                          } else {
+                            controller.isEmailOk.value = false;
                           }
                         },
                         style: widget.textStyle.titleSmall,
                         cursorHeight: 18,
                         cursorWidth: 1,
                         expands: false,
-                        controller: controller.textUserNameEditingController,
+                        controller: controller.textEmailEditingController,
                         decoration: InputDecoration(
-                          icon: controller.username.value? Icon(Icons.check,color: Colors.green,) :Icon(Icons.person),
+                          icon:
+                              controller.isEmailOk.value
+                                  ? const Icon(Icons.check, color: Colors.green)
+                                  : const Icon(Icons.email),
                           labelStyle: widget.textStyle.titleMedium,
-                          label: Text('Username'),
+                          label: const Text('Email'),
                           fillColor: Colors.black,
                           hoverColor: Colors.black,
-                          contentPadding: EdgeInsets.only(left: 2),
-                          hintFadeDuration: Duration(seconds: 1),
+                          contentPadding: const EdgeInsets.only(left: 2),
+                          hintFadeDuration: const Duration(seconds: 1),
                         ),
                       ),
-                      SizedBox(height: 35),
+                      const SizedBox(height: 35),
                       //password
                       TextField(
                         onChanged: (value) {
-                          
-                          if(value.isPassport){
-
-                            controller.isPassportOk.value=true;
-                          }else{
-                            controller.isPassportOk.value=false;
+                          if (value.isPassport) {
+                            controller.isPassportOk.value = true;
+                          } else {
+                            controller.isPassportOk.value = false;
                           }
-
                         },
-                        
+
                         obscureText: controller.obscureTextBool.value,
                         style: widget.textStyle.titleSmall,
                         cursorHeight: 18,
@@ -121,14 +122,17 @@ class _LoginScreenState extends State<LoginScreen>
                         expands: false,
                         controller: controller.textPasswordUPEditingController,
                         decoration: InputDecoration(
-                          icon: controller.isPassportOk.value? Icon(Icons.check,color: Colors.green,): Icon(Icons.lock),
+                          icon:
+                              controller.isPassportOk.value
+                                  ? const Icon(Icons.check, color: Colors.green)
+                                  : const Icon(Icons.lock),
                           labelStyle: widget.textStyle.titleMedium,
-                          label: Text('Password'),
+                          label: const Text('Password'),
                           fillColor: Colors.black,
                           hoverColor: Colors.black,
-                          contentPadding: EdgeInsets.only(left: 2),
-                          hintFadeDuration: Duration(seconds: 1),
-                          
+                          contentPadding: const EdgeInsets.only(left: 2),
+                          hintFadeDuration: const Duration(seconds: 1),
+
                           suffixIcon: InkWell(
                             onTap: () {
                               controller.obscureTextBool.value
@@ -136,14 +140,23 @@ class _LoginScreenState extends State<LoginScreen>
                                   : controller.obscureTextBool.value = true;
                             },
                             child: Text(
-                              controller.obscureTextBool.value ? 'show' : 'Hide',
+                              controller.obscureTextBool.value
+                                  ? 'show'
+                                  : 'Hide',
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (controller.isEmailOk.value) {
+                            //create_account
+                            controller.signIngFirbaseWithEmailAndPassword();
+                          } else {
+                            Get.snackbar('Error', 'email nothing');
+                          }
+                        },
                         style: ButtonStyle(
                           fixedSize: WidgetStatePropertyAll(
                             Size(Get.width / 1.2, Get.height / 13.53),
@@ -154,8 +167,8 @@ class _LoginScreenState extends State<LoginScreen>
                           style: widget.textStyle.titleLarge,
                         ),
                       ),
-                      SizedBox(height: 30),
-                      Row(
+                      const SizedBox(height: 30),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('Forgot your password?'),
@@ -163,8 +176,8 @@ class _LoginScreenState extends State<LoginScreen>
                           Text('Reset here'),
                         ],
                       ),
-                      SizedBox(height: 20),
-                      Text('Or sign in with'),
+                      const SizedBox(height: 20),
+                      const Text('Or sign in with'),
                     ],
                   ),
                 );

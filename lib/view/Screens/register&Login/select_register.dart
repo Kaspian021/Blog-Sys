@@ -32,12 +32,12 @@ class _SelectRegisterState extends State<SelectRegister>
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
 
     animationDivider = Tween<Offset>(
-      begin: Offset(-.2, 0),
-      end: Offset(.18, 0),
+      begin: const Offset(-.2, 0),
+      end: const Offset(.18, 0),
     ).animate(CurvedAnimation(parent: controller, curve: Curves.elasticInOut));
 
     super.initState();
@@ -50,17 +50,17 @@ class _SelectRegisterState extends State<SelectRegister>
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Image.asset(Assets.images.logoBlog.path, scale: 2.5), //Image_Logo
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               //container_Login
               Container(
                 height: Get.height / 1.2,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromARGB(255, 24, 27, 211),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
@@ -69,7 +69,7 @@ class _SelectRegisterState extends State<SelectRegister>
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     //select_login||signUP
                     Padding(
                       padding: const EdgeInsets.all(12.0),
@@ -150,7 +150,7 @@ class _SelectRegisterState extends State<SelectRegister>
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     //login_screen|| SignUpScreen
                     Obx(
                       () =>

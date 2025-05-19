@@ -11,6 +11,7 @@ class SignUpScreen extends StatefulWidget {
     required this.textStyle,
 
   });
+  // ignore: prefer_typing_uninitialized_variables
   final textStyle;
 
   @override
@@ -27,13 +28,13 @@ class _SignUpScreenState extends State<SignUpScreen>
   void initState() {
     SignUpAnimationScreen.animationController=AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
     SignUpAnimationScreen.animationController.forward();
 
     SignUpAnimationScreen.animationContainerSignUp = Tween<Offset>(
-      begin: Offset(0, 1),
-      end: Offset(0, 0),
+      begin: const Offset(0, 1),
+      end: const Offset(0, 0),
     ).animate(
       CurvedAnimation(
         parent: SignUpAnimationScreen.animationController,
@@ -51,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen>
         child: Container(
           width: double.infinity,
           height: Get.height / 2.16,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25),
@@ -72,7 +73,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                           style: widget.textStyle.bodyLarge,
                         ),
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Align(
                         alignment: Alignment.topLeft,
                         child: Text(
@@ -80,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                           style: widget.textStyle.bodySmall,
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       //Username
                       TextField(
                         onChanged: (value) {
@@ -96,16 +97,16 @@ class _SignUpScreenState extends State<SignUpScreen>
                         expands: false,
                         controller: controller.textUserNameEditingController,
                         decoration: InputDecoration(
-                          icon: controller.username.value? Icon(Icons.check,color: Colors.green,) :Icon(Icons.person),
+                          icon: controller.username.value? const Icon(Icons.check,color: Colors.green,) :const Icon(Icons.person),
                           labelStyle: widget.textStyle.titleMedium,
-                          label: Text('Username'),
+                          label: const Text('Username'),
                           fillColor: Colors.black,
                           hoverColor: Colors.black,
-                          contentPadding: EdgeInsets.only(left: 2),
-                          hintFadeDuration: Duration(seconds: 1),
+                          contentPadding: const EdgeInsets.only(left: 2),
+                          hintFadeDuration: const Duration(seconds: 1),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       //Email
                       TextField(
                         onChanged: (value) {
@@ -124,21 +125,21 @@ class _SignUpScreenState extends State<SignUpScreen>
                         expands: false,
                         controller: controller.textEmailEditingController,
                         decoration: InputDecoration(
-                          icon: controller.isEmailOk.value? Icon(Icons.check,color: Colors.green,): Icon(Icons.email),
+                          icon: controller.isEmailOk.value? const Icon(Icons.check,color: Colors.green,): const Icon(Icons.email),
                           labelStyle: widget.textStyle.titleMedium,
-                          label: Text('Email'),
+                          label: const Text('Email'),
                           fillColor: Colors.black,
                           hoverColor: Colors.black,
-                          contentPadding: EdgeInsets.only(left: 2),
-                          hintFadeDuration: Duration(seconds: 1),
+                          contentPadding: const EdgeInsets.only(left: 2),
+                          hintFadeDuration: const Duration(seconds: 1),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       //password
                       TextField(
                         onChanged: (value) {
                           
-                          if(value.isPassport){
+                          if(value.length >=7){
 
                             controller.isPassportOk.value=true;
                           }else{
@@ -154,13 +155,13 @@ class _SignUpScreenState extends State<SignUpScreen>
                         expands: false,
                         controller: controller.textPasswordUPEditingController,
                         decoration: InputDecoration(
-                          icon: controller.isPassportOk.value? Icon(Icons.check,color: Colors.green,): Icon(Icons.lock),
+                          icon: controller.isPassportOk.value? const Icon(Icons.check,color: Colors.green,): const Icon(Icons.lock),
                           labelStyle: widget.textStyle.titleMedium,
-                          label: Text('Password'),
+                          label: const Text('Password'),
                           fillColor: Colors.black,
                           hoverColor: Colors.black,
-                          contentPadding: EdgeInsets.only(left: 2),
-                          hintFadeDuration: Duration(seconds: 1),
+                          contentPadding: const EdgeInsets.only(left: 2),
+                          hintFadeDuration: const Duration(seconds: 1),
                           
                           suffixIcon: InkWell(
                             onTap: () {
@@ -174,7 +175,7 @@ class _SignUpScreenState extends State<SignUpScreen>
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       //Submit_Button
                       ElevatedButton(
                         style: ButtonStyle(
@@ -183,17 +184,23 @@ class _SignUpScreenState extends State<SignUpScreen>
                           ),
                         ),
                         onPressed: () {
+                          if(controller.isEmailOk.value){
 
-                          //create_account
-                          controller.signUpWithEmailAndPassword();
+                            //create_account
+                            controller.signUpWithEmailAndPassword();
+
+                          }else{
+                            Get.snackbar('Error', 'email nothing');
+                          }
+                          
                         },
                         child: Text('CREATE', style: widget.textStyle.titleLarge),
                       ),
                       
                       
-                      SizedBox(height: 30),
-                      Text('Or sign in with'),
-                      Row(
+                      const SizedBox(height: 30),
+                      const Text('Or sign in with'),
+                      const Row(
                         children: [
 
                         ],
