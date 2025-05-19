@@ -1,24 +1,28 @@
 import 'package:blog_sys/controller/login_controller.dart';
-import 'package:blog_sys/controller/route_controller/routs.dart';
-import 'package:blog_sys/view/Screens/StartScreen/splash_screen.dart';
+import 'package:blog_sys/view/route_Screen/routs.dart';
+import 'package:blog_sys/view/Screens/StartScreens/splash_screen.dart';
+import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'firebase_options.dart';
 
 void main()async {
 
   WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  
+  runApp(const MyApp());
 }
 
 
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       getPages: Routs.routs,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      initialRoute: RoutsName.routeSplashScreen,
 
       theme: ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
               }
               return Colors.blue;
             }),
-            animationDuration: Duration(seconds: 1),
+            animationDuration: const Duration(seconds: 1),
             shape: WidgetStatePropertyAll(
               ContinuousRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
@@ -48,12 +52,18 @@ class MyApp extends StatelessWidget {
           ),
         ),
         
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodyLarge: TextStyle(
             fontFamily: 'Avenir',
             fontWeight: FontWeight.w700,
             color: Colors.black,
             fontSize: 22,
+          ),
+          bodyMedium: TextStyle(
+            fontFamily: 'Avenir',
+            fontWeight: FontWeight.w700,
+            color: Colors.white,
+            fontSize: 18,
           ),
           bodySmall: TextStyle(
             fontFamily: 'Avenir',
@@ -66,13 +76,13 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w700,
             color: Colors.white,
             fontSize: 16,
-            // ),
-            // bodyLarge: TextStyle(
-            //   fontFamily: 'Avenir',
-            //   fontWeight: FontWeight.w700,
-            //   color: Colors.black,
-            //   fontSize: 24
-            // ),
+            ),
+            titleMedium: TextStyle(
+              fontFamily: 'Avenir',
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+              fontSize: 16,
+            ),
             // bodyLarge: TextStyle(
             //   fontFamily: 'Avenir',
             //   fontWeight: FontWeight.w700,
@@ -81,7 +91,7 @@ class MyApp extends StatelessWidget {
             // ),
           ),
         ),
-      ),
+      
     );
   }
 }
