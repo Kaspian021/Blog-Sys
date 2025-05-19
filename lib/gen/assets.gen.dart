@@ -9,6 +9,23 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/Group 175 (1).png
+  AssetGenImage get group1751 =>
+      const AssetGenImage('assets/icons/Group 175 (1).png');
+
+  /// File path: assets/icons/Menu.png
+  AssetGenImage get menu => const AssetGenImage('assets/icons/Menu.png');
+
+  /// File path: assets/icons/Search.png
+  AssetGenImage get search => const AssetGenImage('assets/icons/Search.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [group1751, menu, search];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
@@ -42,6 +59,7 @@ class $AssetsImagesGen {
 class Assets {
   const Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
