@@ -1,5 +1,5 @@
 
-import 'package:blog_sys/controller/login_controller.dart';
+import 'package:blog_sys/controller/Register/login_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

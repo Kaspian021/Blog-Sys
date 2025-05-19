@@ -1,7 +1,7 @@
 
 
 import 'package:blog_sys/controller/Animation_controller/signup_animation_screen.dart';
-import 'package:blog_sys/controller/register_controller.dart';
+import 'package:blog_sys/controller/Register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -171,6 +171,8 @@ class _SignUpScreenState extends State<SignUpScreen>
                             },
                             child: Text(
                               controller.obscureTextBool.value ? 'show' : 'Hide',
+                              
+                                  style: widget.textStyle.titleMedium,
                             ),
                           ),
                         ),
@@ -199,7 +201,8 @@ class _SignUpScreenState extends State<SignUpScreen>
                       
                       
                       const SizedBox(height: 30),
-                      const Text('Or sign in with'),
+                      Text('Or sign in with',
+                                  style: widget.textStyle.titleMedium,),
                       const Row(
                         children: [
 

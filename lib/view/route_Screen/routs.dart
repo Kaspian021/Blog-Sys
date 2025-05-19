@@ -29,8 +29,8 @@ class Routs {
     ),
     GetPage(
       name: RoutsName.routeHomeScreen,
-      page: () => const HomeScreen(),
-      binding: BindLoginScreen(),
+      page: () =>  HomeScreen(),
+      binding: BindHomeScreen(),
     ),
   ];
 }

@@ -1,10 +1,18 @@
+import 'package:blog_sys/component/service_storage.dart';
 import 'package:blog_sys/component/temps.dart';
+import 'package:blog_sys/controller/Home/home_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+   HomeScreen({super.key});
+
+  final box= GetStorage();
+  final controller= Get.find<HomeController>();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +21,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
+        //bottomNavigationBar
         bottomNavigationBar: Container(
           height: Get.height/9.90,
           decoration: const BoxDecoration(
@@ -68,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(
-                      child: Text('Hi, Kaspian', style: textstyle.titleMedium),//username
+                      child: Text('Hi, ${!controller.isLogin.value?box.read(SaveToken.userName):null}', style: textstyle.titleMedium),//username
                     ), 
                     const Icon(Icons.notifications_active_outlined),
                   ],

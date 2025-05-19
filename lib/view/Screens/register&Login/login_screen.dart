@@ -1,5 +1,5 @@
 import 'package:blog_sys/controller/Animation_controller/login_animation_screen.dart';
-import 'package:blog_sys/controller/login_controller.dart';
+import 'package:blog_sys/controller/Register/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen>
 
   @override
   Widget build(BuildContext context) {
+   
     return Expanded(
       child: SlideTransition(
         position: LoginAnimationScreen.animationContainerLogin,
@@ -143,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen>
                               controller.obscureTextBool.value
                                   ? 'show'
                                   : 'Hide',
+                                  style: widget.textStyle.titleMedium,
                             ),
                           ),
                         ),
@@ -167,13 +169,15 @@ class _LoginScreenState extends State<LoginScreen>
                           style: widget.textStyle.titleLarge,
                         ),
                       ),
-                      const SizedBox(height: 30),
-                      const Row(
+                      const SizedBox(height: 40),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Forgot your password?'),
-                          SizedBox(width: 10),
-                          Text('Reset here'),
+                          Text('Forgot your password?',
+                                  style: widget.textStyle.titleMedium,),
+                          const SizedBox(width: 5),
+                          Text('Reset here',
+                                  style: widget.textStyle.titleMedium,),
                         ],
                       ),
                       const SizedBox(height: 20),

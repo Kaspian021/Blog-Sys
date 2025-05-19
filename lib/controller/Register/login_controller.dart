@@ -35,6 +35,10 @@ class LoginController extends GetxController {
 
       if (user != null) {
         Get.snackbar('Welcome', 'Welcome to account');
+        box.write(SaveToken.token, user.uid);
+        
+        
+        Get.offAndToNamed(RoutsName.routeHomeScreen);
       }
     } on FirebaseAuthException catch (e) {
       log('Firebase Auth Error Code: ${e.code}');

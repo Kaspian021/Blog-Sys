@@ -1,5 +1,5 @@
-import 'package:blog_sys/controller/login_controller.dart';
-import 'package:blog_sys/controller/register_controller.dart';
+import 'package:blog_sys/controller/Register/login_controller.dart';
+import 'package:blog_sys/controller/Register/register_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
 import 'package:blog_sys/view/Screens/register&Login/login_screen.dart';
 import 'package:blog_sys/view/Screens/register&Login/register_screen.dart';

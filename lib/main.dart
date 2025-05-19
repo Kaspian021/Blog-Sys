@@ -1,6 +1,5 @@
-import 'package:blog_sys/controller/login_controller.dart';
+import 'package:blog_sys/controller/Register/login_controller.dart';
 import 'package:blog_sys/view/route_Screen/routs.dart';
-import 'package:blog_sys/view/Screens/StartScreens/splash_screen.dart';
 import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
