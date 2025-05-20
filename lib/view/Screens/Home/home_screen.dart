@@ -1,3 +1,5 @@
+
+
 import 'package:blog_sys/component/elements.dart';
 import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/component/temps.dart';
@@ -250,61 +252,70 @@ class HomeScreen extends StatelessWidget {
   }
   //Articles_New
   Widget _buildArticleItem(article, textstyle, sizeBody) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: sizeBody,
-        right: sizeBody,
-        bottom: sizeBody,
-      ),
-      child: Stack(
-        children: [
-          Container(
-            height: Get.height / 4.5,
-            width: Get.width/1.2,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: const [
-                BoxShadow(blurRadius: 10.0, color: Colors.black12),
-              ],
+    return Obx(
+      ()=> Padding(
+        padding: EdgeInsets.only(
+          left: sizeBody,
+          right: sizeBody,
+          bottom: sizeBody,
+        ),
+        child: !controller.isloading.value? Stack(
+          children: [
+            Container(
+              height: Get.height / 4.5,
+              width: Get.width/1.2,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(blurRadius: 10.0, color: Colors.black12),
+                ],
+                
+                borderRadius: BorderRadius.circular(20),
+                
+              ),
               
-              borderRadius: BorderRadius.circular(20),
-              
+            ),
+            CachedNetworkImage(
+              imageBuilder: (context, imageProvider) {
+                
+                return Container(
+                width: Get.width/2.7,
+                height: Get.height / 4.5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(image: NetworkImage(article.image), fit: BoxFit.cover,),
+                ),
+              );
+              }, imageUrl: article.image,
+              errorWidget: (context, url, error) => const Icon(Icons.image),
+              placeholder: (context, url) => loading(),
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Column(
+                children: [
+                  const SizedBox(height: 50,),
+                  SizedBox(
+                    width: Get.width/2.2,
+                    
+                    child: RichText(
+                        text: TextSpan(
+                          text: article.title,
+                          
+                        style: const TextStyle(fontSize: 13,color: Colors.black),
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                          textAlign: TextAlign.right,
+                        
+                      ),
+                  ),
+                ],
+              ),
             ),
             
-          ),
-          Container(
-            width: Get.width/2.7,
-            height: Get.height / 4.5,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(image: NetworkImage(article.image), fit: BoxFit.cover,),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Column(
-              children: [
-                const SizedBox(height: 50,),
-                SizedBox(
-                  width: Get.width/2.2,
-                  
-                  child: RichText(
-                      text: TextSpan(
-                        text: article.title,
-                        
-                      style: const TextStyle(fontSize: 13,color: Colors.black),
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                        maxLines: 3,
-                        textAlign: TextAlign.right,
-                      
-                    ),
-                ),
-              ],
-            ),
-          ),
-          
-        ],
+          ],
+        ):loading(),
       ),
     );
   }

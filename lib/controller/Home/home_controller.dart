@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
 
+  RxBool isloading= false.obs;
   RxBool isLogin= false.obs;
   RxList<ModelHomeNewArticles> listArticlesNews= RxList();
 
@@ -18,7 +19,7 @@ class HomeController extends GetxController {
   }
 
   newsArticlesList()async{
-
+    isloading.value= true;
     try {
       final response= await  ServiceApi().getApi(GetNamesUrl.newsArticlesURl);
 
@@ -33,6 +34,7 @@ class HomeController extends GetxController {
     } catch (e) {
       log('Error: $e');
     }
+    isloading.value= false;
   }
 
 }
