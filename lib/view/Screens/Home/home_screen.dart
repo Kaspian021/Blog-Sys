@@ -16,13 +16,133 @@ class HomeScreen extends StatelessWidget {
   final box = GetStorage();
   final controller = Get.find<HomeController>();
 
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     var textstyle = Theme.of(context).textTheme;
     var sizeBody = MediaQuery.of(context).size.width / 12;
     return SafeArea(
       child: Scaffold(
+        drawerEdgeDragWidth: 20,
+        key: _key,
+        drawerEnableOpenDragGesture: false,
+        endDrawerEnableOpenDragGesture: true,
         backgroundColor: Colors.white,
+        drawerScrimColor: Colors.black,
+        
+        endDrawer:  Directionality(
+          textDirection: TextDirection.rtl,
+
+          
+
+          
+          
+          child: ListView(
+            
+            children:  [
+              const SizedBox(height: 50,),
+              Image.asset(Assets.images.logoBlog.path,scale: 2,color: Colors.white,),
+              const SizedBox(height: 50,),
+              ListTile(
+                onTap: () {
+                  //Screen_profile
+                },
+                title: Container(
+                  width: Get.width/1.9,
+                  
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.white,blurRadius: 10)
+                    ],
+                    border: Border.all(color: Colors.blue,width: 1,style: BorderStyle.solid)
+                  ),
+                  child: Row(
+                    
+                    children: [
+                      const SizedBox(width: 20,),
+                      const Icon(Icons.person,size: 35,),
+                      const SizedBox(width: 5,),
+                      Text('Profile',style: textstyle.bodyLarge,),
+                      
+                    ],
+                  ),
+                )
+              ),
+              const SizedBox(height: 10,),
+              const Divider(
+                color: Colors.blueAccent,
+                endIndent: 10,
+                indent: 10,
+
+              ),
+              const SizedBox(height: 10,),
+              ListTile(
+                
+                title: Container(
+                  width: Get.width/1.9,
+                  
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.white,blurRadius: 10)
+                    ],
+                    border: Border.all(color: Colors.blue,width: 1,style: BorderStyle.solid)
+                  ),
+                  child: Row(
+                    
+                    children: [
+                      const SizedBox(width: 20,),
+                      const Icon(Icons.person,size: 35,),
+                      const SizedBox(width: 5,),
+                      Text('Profile',style: textstyle.bodyLarge,),
+                      
+                    ],
+                  ),
+                )
+              ),
+              const SizedBox(height: 10,),
+              const Divider(
+                color: Colors.blueAccent,
+                endIndent: 10,
+                indent: 10,
+
+              ),
+              const SizedBox(height: 10,),
+              ListTile(
+                onTap: () {},
+                title: Container(
+                  width: Get.width/1.9,
+                  
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                    boxShadow: const [
+                      BoxShadow(color: Colors.white,blurRadius: 10)
+                    ],
+                    border: Border.all(color: Colors.blue,width: 1,style: BorderStyle.solid)
+                  ),
+                  child: Row(
+                    
+                    children: [
+                      const SizedBox(width: 20,),
+                      const Icon(Icons.person,size: 35,),
+                      const SizedBox(width: 5,),
+                      Text('Profile',style: textstyle.bodyLarge,),
+                      
+                    ],
+                  ),
+                )
+              ),
+              
+            ],
+          ),
+
+        ),
+
         //bottomNavigationBar
         bottomNavigationBar: Container(
           height: Get.height / 9.90,
@@ -57,7 +177,10 @@ class HomeScreen extends StatelessWidget {
                     icon: const Icon(Icons.search_rounded, size: 30),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _key.currentState!.openDrawer();
+                      
+                    },
                     icon: const Icon(Icons.menu, size: 30),
                   ),
                 ],
