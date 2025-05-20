@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:blog_sys/component/service_storage.dart';
+import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/view/Screens/StartScreens/onboarding_screen.dart';
 import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:firebase_auth/firebase_auth.dart';

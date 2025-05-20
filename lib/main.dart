@@ -82,12 +82,12 @@ class MyApp extends StatelessWidget {
               color: Colors.black,
               fontSize: 16,
             ),
-            // bodyLarge: TextStyle(
-            //   fontFamily: 'Avenir',
-            //   fontWeight: FontWeight.w700,
-            //   color: Colors.black,
-            //   fontSize: 24
-            // ),
+            headlineMedium: TextStyle(
+              fontFamily: 'Avenir',
+              fontWeight: FontWeight.w700,
+              color: Colors.black,
+              fontSize: 18
+            ),
           ),
         ),
       

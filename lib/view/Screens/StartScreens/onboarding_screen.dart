@@ -287,18 +287,24 @@ class _OnboardingPageState extends State<OnboardingPage>
                 const SizedBox(width: 5,),
                 GestureDetector(
                   onTap: () {
-                    Get.offAndToNamed(RoutsName.routeLoginScreen);
+                    Get.offAndToNamed(RoutsName.routeHomeScreen);
                   },
                   child: Container(
                     height: 45,
-                    width: 70,
+                    width: 80,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 1, 45, 189),
                       borderRadius: BorderRadius.circular(10),
                       shape: BoxShape.rectangle,
                   
                     ),
-                    child:  const Icon(Icons.arrow_forward,color: Colors.white,)
+                    child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text('Start',style: textstyle.bodyMedium,),
+                        const Icon(Icons.arrow_forward,color: Colors.white,size: 20,),
+                      ],
+                    )
                   ),
                 ),
                 
