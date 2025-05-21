@@ -4,6 +4,9 @@ import 'dart:developer';
 import 'package:blog_sys/component/get_names_url.dart';
 import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/model/model_home_new_articles.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/profile_screen.dart';
+import 'package:blog_sys/view/route_Screen/routs_name.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
@@ -36,5 +39,7 @@ class HomeController extends GetxController {
     }
     isloading.value= false;
   }
+
+
 
 }

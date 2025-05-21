@@ -6,6 +6,7 @@ class SaveToken {
   static String token = 'token';
   static String userName = 'username';
   static String email = 'Email';
+  static String nameBisines= 'nameBisines';
 }
 
 class ServiceApi {

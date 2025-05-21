@@ -1,5 +1,4 @@
 import 'package:blog_sys/controller/Register/login_controller.dart';
-import 'package:blog_sys/view/Screens/Main_Screens/profile_screen.dart';
 import 'package:blog_sys/view/route_Screen/routs.dart';
 import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,8 +30,8 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       getPages: Routs.routs,
       debugShowCheckedModeBanner: false,
-      // initialRoute: RoutsName.routeSplashScreen,
-      home: const ProfileScreen(),
+      initialRoute: RoutsName.routeSplashScreen,
+      
       theme: ThemeData(
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(

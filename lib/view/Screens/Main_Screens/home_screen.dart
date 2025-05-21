@@ -3,8 +3,10 @@
 import 'package:blog_sys/component/elements.dart';
 import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/component/temps.dart';
-import 'package:blog_sys/controller/Home/home_controller.dart';
+import 'package:blog_sys/controller/Main_Screens/home_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/profile_screen.dart';
+import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,136 +33,139 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         drawerScrimColor: Colors.black,
         //Drawer programm
-        endDrawer:  Directionality(
+        endDrawer: Directionality(
           textDirection: TextDirection.rtl,
 
-          
-
-          
-          
-          child: Column(
-            
-            children:  [
-              const SizedBox(height: 30,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Builder(
+            builder: (BuildContext inercontext) {
+              return Column(
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      //go to Screen profile
-                  
-                      
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(color: Colors.blue,width: 1),
-                        boxShadow: const [
-                          BoxShadow(
-                            
-                            color: Colors.white,
-                            blurRadius: 7
-                          )
-                        ]
-                        // image: DecorationImage(image: ) image Profile person
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.offAndToNamed(RoutsName.routeProfileScreen);
+                          
+                          
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(color: Colors.blue, width: 1),
+                            boxShadow: const [
+                              BoxShadow(color: Colors.white, blurRadius: 7),
+                            ],
+                            // image: DecorationImage(image: ) image Profile person
+                          ),
+                          child: const Icon(
+                            Icons.person,
+                            color: Colors.black,
+                            size: 50,
+                          ),
+                        ),
                       ),
-                      child: const Icon(Icons.person,color: Colors.black,size: 50,),
+                      Image.asset(
+                        Assets.images.logoBlog.path,
+                        scale: 2,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+              
+                  const SizedBox(height: 80),
+                  Container(
+                    width: Get.width / 2.1,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.white, blurRadius: 10),
+                      ],
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 20),
+                        const Icon(Icons.person, size: 35),
+                        const SizedBox(width: 5),
+                        Text('Support', style: textstyle.bodyLarge),
+                      ],
                     ),
                   ),
-                  Image.asset(Assets.images.logoBlog.path,scale: 2,color: Colors.white,),
+                  const SizedBox(height: 20),
+                  const Divider(
+                    color: Colors.blueAccent,
+                    endIndent: 40,
+                    indent: 40,
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    width: Get.width / 2.1,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.white, blurRadius: 10),
+                      ],
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 20),
+                        const Icon(Icons.person, size: 35),
+                        const SizedBox(width: 5),
+                        Text('Support', style: textstyle.bodyLarge),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Divider(
+                    color: Colors.blueAccent,
+                    endIndent: 40,
+                    indent: 40,
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: Get.width / 2.1,
+                    height: 40,
+              
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.white, blurRadius: 10),
+                      ],
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 20),
+                        const Icon(Icons.person, size: 35),
+                        const SizedBox(width: 5),
+                        Text('Support', style: textstyle.bodyLarge),
+                      ],
+                    ),
+                  ),
                 ],
-              ),
-              
-              
-              const SizedBox(height: 80,),
-              Container(
-                  width: Get.width/2.1,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.white,blurRadius: 10)
-                    ],
-                    border: Border.all(color: Colors.blue,width: 1,style: BorderStyle.solid)
-                  ),
-                  child: Row(
-                    
-                    children: [
-                      const SizedBox(width: 20,),
-                      const Icon(Icons.person,size: 35,),
-                      const SizedBox(width: 5,),
-                      Text('Support',style: textstyle.bodyLarge,),
-                      
-                    ],
-                  ),
-                ),
-              const SizedBox(height: 20,),
-              const Divider(
-                color: Colors.blueAccent,
-                endIndent: 40,
-                indent: 40,
-
-              ),
-              const SizedBox(height: 10,),
-              Container(
-                  width: Get.width/2.1,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.white,blurRadius: 10)
-                    ],
-                    border: Border.all(color: Colors.blue,width: 1,style: BorderStyle.solid)
-                  ),
-                  child: Row(
-                    
-                    children: [
-                      const SizedBox(width: 20,),
-                      const Icon(Icons.person,size: 35,),
-                      const SizedBox(width: 5,),
-                      Text('Support',style: textstyle.bodyLarge,),
-                      
-                    ],
-                  ),
-                ),
-              const SizedBox(height: 20,),
-              const Divider(
-                color: Colors.blueAccent,
-                endIndent: 40,
-                indent: 40,
-
-              ),
-              const SizedBox(height: 20,),
-              Container(
-                  width: Get.width/2.1,
-                  height: 40,
-                  
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.white,blurRadius: 10)
-                    ],
-                    border: Border.all(color: Colors.blue,width: 1,style: BorderStyle.solid)
-                  ),
-                  child: Row(
-                    
-                    children: [
-                      const SizedBox(width: 20,),
-                      const Icon(Icons.person,size: 35,),
-                      const SizedBox(width: 5,),
-                      Text('Support',style: textstyle.bodyLarge,),
-                      
-                    ],
-                  ),
-                ),
-              
-            ],
+              );
+            }
           ),
-
         ),
 
         //bottomNavigationBar
@@ -199,7 +204,6 @@ class HomeScreen extends StatelessWidget {
                   IconButton(
                     onPressed: () {
                       _key.currentState!.openDrawer();
-                      
                     },
                     icon: const Icon(Icons.menu, size: 30),
                   ),
@@ -380,12 +384,21 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 30),
               //list_News_Articles
               Obx(
-                () => !controller.isloading.value ? Column(
-                  children:
-                      controller.listArticlesNews
-                          .map((f) => _buildArticleItem(f, textstyle, sizeBody))//list_neverScroller with Column
-                          .toList(),
-                ):loading(),
+                () =>
+                    !controller.isloading.value
+                        ? Column(
+                          children:
+                              controller.listArticlesNews
+                                  .map(
+                                    (f) => _buildArticleItem(
+                                      f,
+                                      textstyle,
+                                      sizeBody,
+                                    ),
+                                  ) //list_neverScroller with Column
+                                  .toList(),
+                        )
+                        : loading(),
               ),
             ],
           ),
@@ -393,74 +406,80 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+
   //Articles_New
   Widget _buildArticleItem(article, textstyle, sizeBody) {
-    return  Padding(
-        padding: EdgeInsets.only(
-          left: sizeBody,
-          right: sizeBody,
-          bottom: sizeBody,
-        ),
-        child: Obx(
-          ()=> !controller.isloading.value? Stack(
-            children: [
-              Container(
-                height: Get.height / 4.5,
-                width: Get.width/1.2,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(blurRadius: 10.0, color: Colors.black12),
-                  ],
-                  
-                  borderRadius: BorderRadius.circular(20),
-                  
-                ),
-                
-              ),
-              CachedNetworkImage(
-                imageBuilder: (context, imageProvider) {
-                  
-                  return Container(
-                  width: Get.width/2.7,
-                  height: Get.height / 4.5,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(image: NetworkImage(article.image), fit: BoxFit.cover,),
-                  ),
-                );
-                }, imageUrl: article.image,
-                errorWidget: (context, url, error) => const Icon(Icons.image),
-                placeholder: (context, url) => loading(),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Column(
+    return Padding(
+      padding: EdgeInsets.only(
+        left: sizeBody,
+        right: sizeBody,
+        bottom: sizeBody,
+      ),
+      child: Obx(
+        () =>
+            !controller.isloading.value
+                ? Stack(
                   children: [
-                    const SizedBox(height: 50,),
-                    SizedBox(
-                      width: Get.width/2.2,
-                      
-                      child: RichText(
-                          text: TextSpan(
-                            text: article.title,
-                            
-                          style: const TextStyle(fontSize: 13,color: Colors.black),
+                    Container(
+                      height: Get.height / 4.5,
+                      width: Get.width / 1.2,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(blurRadius: 10.0, color: Colors.black12),
+                        ],
+
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    CachedNetworkImage(
+                      imageBuilder: (context, imageProvider) {
+                        return Container(
+                          width: Get.width / 2.7,
+                          height: Get.height / 4.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                              image: NetworkImage(article.image),
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                            textAlign: TextAlign.right,
-                          
-                        ),
+                        );
+                      },
+                      imageUrl: article.image,
+                      errorWidget:
+                          (context, url, error) => const Icon(Icons.image),
+                      placeholder: (context, url) => loading(),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 50),
+                          SizedBox(
+                            width: Get.width / 2.2,
+
+                            child: RichText(
+                              text: TextSpan(
+                                text: article.title,
+
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.black,
+                                ),
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 3,
+                              textAlign: TextAlign.right,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
-                ),
-              ),
-              
-            ],
-          ): loading(),
-        ),
-      
+                )
+                : loading(),
+      ),
     );
   }
 }
