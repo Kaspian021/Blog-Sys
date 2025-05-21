@@ -1,5 +1,5 @@
 import 'package:blog_sys/controller/bindings.dart';
-import 'package:blog_sys/view/Screens/Home/home_screen.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/home_screen.dart';
 import 'package:blog_sys/view/Screens/StartScreens/splash_screen.dart';
 import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:blog_sys/view/Screens/register&Login/select_register.dart';

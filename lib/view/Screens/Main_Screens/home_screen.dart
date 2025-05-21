@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
         endDrawerEnableOpenDragGesture: true,
         backgroundColor: Colors.white,
         drawerScrimColor: Colors.black,
-        
+        //Drawer programm
         endDrawer:  Directionality(
           textDirection: TextDirection.rtl,
 
@@ -38,19 +38,45 @@ class HomeScreen extends StatelessWidget {
 
           
           
-          child: ListView(
+          child: Column(
             
             children:  [
-              const SizedBox(height: 50,),
-              Image.asset(Assets.images.logoBlog.path,scale: 2,color: Colors.white,),
-              const SizedBox(height: 50,),
-              ListTile(
-                onTap: () {
-                  //Screen_profile
-                },
-                title: Container(
-                  width: Get.width/1.9,
+              const SizedBox(height: 30,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      //go to Screen profile
                   
+                      
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        
+                        borderRadius: BorderRadius.circular(100),
+                        border: Border.all(color: Colors.blue,width: 1),
+                        boxShadow: const [
+                          BoxShadow(
+                            
+                            color: Colors.white,
+                            blurRadius: 7
+                          )
+                        ]
+                        // image: DecorationImage(image: ) image Profile person
+                      ),
+                      child: const Icon(Icons.person,color: Colors.black,size: 50,),
+                    ),
+                  ),
+                  Image.asset(Assets.images.logoBlog.path,scale: 2,color: Colors.white,),
+                ],
+              ),
+              
+              
+              const SizedBox(height: 80,),
+              Container(
+                  width: Get.width/2.1,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -65,25 +91,22 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 20,),
                       const Icon(Icons.person,size: 35,),
                       const SizedBox(width: 5,),
-                      Text('Profile',style: textstyle.bodyLarge,),
+                      Text('Support',style: textstyle.bodyLarge,),
                       
                     ],
                   ),
-                )
-              ),
-              const SizedBox(height: 10,),
+                ),
+              const SizedBox(height: 20,),
               const Divider(
                 color: Colors.blueAccent,
-                endIndent: 10,
-                indent: 10,
+                endIndent: 40,
+                indent: 40,
 
               ),
               const SizedBox(height: 10,),
-              ListTile(
-                
-                title: Container(
-                  width: Get.width/1.9,
-                  
+              Container(
+                  width: Get.width/2.1,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
@@ -98,24 +121,22 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 20,),
                       const Icon(Icons.person,size: 35,),
                       const SizedBox(width: 5,),
-                      Text('Profile',style: textstyle.bodyLarge,),
+                      Text('Support',style: textstyle.bodyLarge,),
                       
                     ],
                   ),
-                )
-              ),
-              const SizedBox(height: 10,),
+                ),
+              const SizedBox(height: 20,),
               const Divider(
                 color: Colors.blueAccent,
-                endIndent: 10,
-                indent: 10,
+                endIndent: 40,
+                indent: 40,
 
               ),
-              const SizedBox(height: 10,),
-              ListTile(
-                onTap: () {},
-                title: Container(
-                  width: Get.width/1.9,
+              const SizedBox(height: 20,),
+              Container(
+                  width: Get.width/2.1,
+                  height: 40,
                   
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -131,12 +152,11 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(width: 20,),
                       const Icon(Icons.person,size: 35,),
                       const SizedBox(width: 5,),
-                      Text('Profile',style: textstyle.bodyLarge,),
+                      Text('Support',style: textstyle.bodyLarge,),
                       
                     ],
                   ),
-                )
-              ),
+                ),
               
             ],
           ),
@@ -360,12 +380,12 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 30),
               //list_News_Articles
               Obx(
-                () => Column(
+                () => !controller.isloading.value ? Column(
                   children:
                       controller.listArticlesNews
                           .map((f) => _buildArticleItem(f, textstyle, sizeBody))//list_neverScroller with Column
                           .toList(),
-                ),
+                ):loading(),
               ),
             ],
           ),
@@ -375,71 +395,72 @@ class HomeScreen extends StatelessWidget {
   }
   //Articles_New
   Widget _buildArticleItem(article, textstyle, sizeBody) {
-    return Obx(
-      ()=> Padding(
+    return  Padding(
         padding: EdgeInsets.only(
           left: sizeBody,
           right: sizeBody,
           bottom: sizeBody,
         ),
-        child: !controller.isloading.value? Stack(
-          children: [
-            Container(
-              height: Get.height / 4.5,
-              width: Get.width/1.2,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(blurRadius: 10.0, color: Colors.black12),
-                ],
+        child: Obx(
+          ()=> !controller.isloading.value? Stack(
+            children: [
+              Container(
+                height: Get.height / 4.5,
+                width: Get.width/1.2,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(blurRadius: 10.0, color: Colors.black12),
+                  ],
+                  
+                  borderRadius: BorderRadius.circular(20),
+                  
+                ),
                 
-                borderRadius: BorderRadius.circular(20),
-                
+              ),
+              CachedNetworkImage(
+                imageBuilder: (context, imageProvider) {
+                  
+                  return Container(
+                  width: Get.width/2.7,
+                  height: Get.height / 4.5,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(image: NetworkImage(article.image), fit: BoxFit.cover,),
+                  ),
+                );
+                }, imageUrl: article.image,
+                errorWidget: (context, url, error) => const Icon(Icons.image),
+                placeholder: (context, url) => loading(),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 50,),
+                    SizedBox(
+                      width: Get.width/2.2,
+                      
+                      child: RichText(
+                          text: TextSpan(
+                            text: article.title,
+                            
+                          style: const TextStyle(fontSize: 13,color: Colors.black),
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                            textAlign: TextAlign.right,
+                          
+                        ),
+                    ),
+                  ],
+                ),
               ),
               
-            ),
-            CachedNetworkImage(
-              imageBuilder: (context, imageProvider) {
-                
-                return Container(
-                width: Get.width/2.7,
-                height: Get.height / 4.5,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  image: DecorationImage(image: NetworkImage(article.image), fit: BoxFit.cover,),
-                ),
-              );
-              }, imageUrl: article.image,
-              errorWidget: (context, url, error) => const Icon(Icons.image),
-              placeholder: (context, url) => loading(),
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Column(
-                children: [
-                  const SizedBox(height: 50,),
-                  SizedBox(
-                    width: Get.width/2.2,
-                    
-                    child: RichText(
-                        text: TextSpan(
-                          text: article.title,
-                          
-                        style: const TextStyle(fontSize: 13,color: Colors.black),
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                          maxLines: 3,
-                          textAlign: TextAlign.right,
-                        
-                      ),
-                  ),
-                ],
-              ),
-            ),
-            
-          ],
-        ):loading(),
-      ),
+            ],
+          ): loading(),
+        ),
+      
     );
   }
 }

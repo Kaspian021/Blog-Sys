@@ -47,6 +47,7 @@ class RegisterController extends GetxController {
         Get.snackbar('Submit', "sendEmailVerification");
         box.write(SaveToken.token, user.uid);
         box.write(SaveToken.userName, textUserNameEditingController.text);
+        box.write(SaveToken.email, textEmailEditingController.text);
         
         Get.offAndToNamed(RoutsName.routeHomeScreen);
       }

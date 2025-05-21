@@ -18,3 +18,12 @@ class BindHomeScreen implements Bindings{
     
   }
 }
+
+class BindProfileScreen implements Bindings {
+  @override
+  void dependencies() {
+    Get.put(HomeController());
+  }
+
+
+}

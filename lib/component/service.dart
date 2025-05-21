@@ -2,9 +2,10 @@ import 'package:dio/dio.dart';
 
 class SaveToken {
   SaveToken._();
-
+  //save Specifications users
   static String token = 'token';
   static String userName = 'username';
+  static String email = 'Email';
 }
 
 class ServiceApi {
