@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/controller/Main_Screens/profile_controller.dart';
@@ -185,8 +185,8 @@ class ProfileScreen extends StatelessWidget {
                             BoxShadow(
                               color: Colors.black87,
                               blurStyle: BlurStyle.normal,
-                              offset: Offset(0, 1),
-                              blurRadius: 3,
+                              offset: Offset(0, 26),
+                              blurRadius: 27,
                             ),
                           ],
                         ),
@@ -195,21 +195,7 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              //Shadow in down profile
-              Container(
-                height: Get.height / 80,
-                width: Get.width / 2.1,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 30,
-                      offset: Offset(0, 1),
-                    ),
-                  ],
-                ),
-              ),
+              
             ],
           ),
         ),

@@ -5,8 +5,7 @@ import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/component/temps.dart';
 import 'package:blog_sys/controller/Main_Screens/home_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
-import 'package:blog_sys/view/Screens/Main_Screens/profile_screen.dart';
-import 'package:blog_sys/view/route_Screen/routs_name.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/Home/drawer_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,140 +32,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         drawerScrimColor: Colors.black,
         //Drawer programm
-        endDrawer: Directionality(
-          textDirection: TextDirection.rtl,
-
-          child: Builder(
-            builder: (BuildContext inercontext) {
-              return Column(
-                children: [
-                  const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Get.offAndToNamed(RoutsName.routeProfileScreen);
-                          
-                          
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(color: Colors.blue, width: 1),
-                            boxShadow: const [
-                              BoxShadow(color: Colors.white, blurRadius: 7),
-                            ],
-                            // image: DecorationImage(image: ) image Profile person
-                          ),
-                          child: const Icon(
-                            Icons.person,
-                            color: Colors.black,
-                            size: 50,
-                          ),
-                        ),
-                      ),
-                      Image.asset(
-                        Assets.images.logoBlog.path,
-                        scale: 2,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-              
-                  const SizedBox(height: 80),
-                  Container(
-                    width: Get.width / 2.1,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(color: Colors.white, blurRadius: 10),
-                      ],
-                      border: Border.all(
-                        color: Colors.blue,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 20),
-                        const Icon(Icons.person, size: 35),
-                        const SizedBox(width: 5),
-                        Text('Support', style: textstyle.bodyLarge),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Divider(
-                    color: Colors.blueAccent,
-                    endIndent: 40,
-                    indent: 40,
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    width: Get.width / 2.1,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(color: Colors.white, blurRadius: 10),
-                      ],
-                      border: Border.all(
-                        color: Colors.blue,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 20),
-                        const Icon(Icons.person, size: 35),
-                        const SizedBox(width: 5),
-                        Text('Support', style: textstyle.bodyLarge),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Divider(
-                    color: Colors.blueAccent,
-                    endIndent: 40,
-                    indent: 40,
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    width: Get.width / 2.1,
-                    height: 40,
-              
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: const [
-                        BoxShadow(color: Colors.white, blurRadius: 10),
-                      ],
-                      border: Border.all(
-                        color: Colors.blue,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const SizedBox(width: 20),
-                        const Icon(Icons.person, size: 35),
-                        const SizedBox(width: 5),
-                        Text('Support', style: textstyle.bodyLarge),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            }
-          ),
-        ),
+        endDrawer: DrawerBlogSys(textstyle: textstyle),
 
         //bottomNavigationBar
         bottomNavigationBar: Container(
