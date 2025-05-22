@@ -1,6 +1,6 @@
 import 'package:blog_sys/controller/Main_Screens/home_controller.dart';
 import 'package:blog_sys/controller/bindings.dart';
-import 'package:blog_sys/view/Screens/Main_Screens/Home/home_screen.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/main_pages.dart';
 import 'package:blog_sys/view/Screens/Main_Screens/profile_screen.dart';
 import 'package:blog_sys/view/Screens/StartScreens/splash_screen.dart';
 import 'package:blog_sys/view/route_Screen/routs_name.dart';
@@ -31,7 +31,7 @@ class Routs {
     ),
     GetPage(
       name: RoutsName.routeHomeScreen,
-      page: () =>  HomeScreen(),
+      page: () =>  MainPages(),
       binding: BindHomeScreen(),
     ),
     GetPage(

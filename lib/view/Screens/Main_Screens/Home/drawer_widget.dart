@@ -36,7 +36,7 @@ class _DrawerBlogSysState extends State<DrawerBlogSys>
     //AnimationsWidgetDrawer
     DrawerAnimationHome.animationLoginIcon = Tween<double>(
       begin: 100,
-      end: 10,
+      end: 2,
     ).animate(
       CurvedAnimation(
         parent: DrawerAnimationHome.animationController,
@@ -91,7 +91,7 @@ class _DrawerBlogSysState extends State<DrawerBlogSys>
                   InkWell(
                     onTap: () {
                       if (controller.isLogin.value) {
-                        Get.offAndToNamed(RoutsName.routeProfileScreen);
+                        Get.toNamed(RoutsName.routeProfileScreen);
                       } else {
                         DrawerAnimationHome.animationController.forward();
                         chengeWidgetLoginIcon = true;
@@ -112,10 +112,12 @@ class _DrawerBlogSysState extends State<DrawerBlogSys>
                         ),
                         child:
                             !chengeWidgetLoginIcon
-                                ? const Icon(
-                                  Icons.person,
-                                  color: Colors.black,
-                                  size: 40,
+                                ?  
+                                   const Icon(
+                                    Icons.person,
+                                    color: Colors.black,
+                                    size: 40,
+                                  
                                 )
                                 : GestureDetector(
                                   onTap:
