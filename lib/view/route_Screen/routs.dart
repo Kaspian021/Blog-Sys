@@ -31,7 +31,7 @@ class Routs {
     ),
     GetPage(
       name: RoutsName.routeHomeScreen,
-      page: () =>  MainPages(),
+      page: () =>  const MainPages(),
       binding: BindHomeScreen(),
     ),
     GetPage(

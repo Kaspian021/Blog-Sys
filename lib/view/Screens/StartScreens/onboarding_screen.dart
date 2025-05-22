@@ -110,19 +110,19 @@ class _OnboardingPageState extends State<OnboardingPage>
     );
     
     OnbordingAnimationScreen.photoAnimationTopLeft = Tween<Offset>(
-      begin: const Offset(.5, -1),
+      begin: const Offset(.5, -1.5),
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
     OnbordingAnimationScreen.photoAnimationTopRight = Tween<Offset>(
-      begin: const Offset(1, 0),
+      begin: const Offset(1.5, 0),
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
     OnbordingAnimationScreen.photoAnimationBottomLeft = Tween<Offset>(
-      begin: const Offset(-1, 0),
+      begin: const Offset(-1.5, 0),
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
     OnbordingAnimationScreen.photoAnimationBottomRight = Tween<Offset>(
-      begin: const Offset(-.5, 1),
+      begin: const Offset(-.5, 1.5),
       end: const Offset(0, 0),
     ).animate(CurvedAnimation(parent: OnbordingAnimationScreen.controller, curve: Curves.bounceOut));
 
@@ -156,7 +156,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                             BoxShadow(
                               blurRadius: 10.0,
                               color: Colors.black54,
-                              offset: Offset(0, 1),
+                              offset: Offset(0, 8),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(20),
@@ -178,7 +178,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                             BoxShadow(
                               blurRadius: 10.0,
                               color: Colors.black54,
-                              offset: Offset(0, 1),
+                              offset: Offset(0, 8),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(20),
@@ -204,7 +204,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                             BoxShadow(
                               blurRadius: 10.0,
                               color: Colors.black54,
-                              offset: Offset(0, 1),
+                              offset: Offset(0, 8),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(20),
@@ -226,7 +226,7 @@ class _OnboardingPageState extends State<OnboardingPage>
                             BoxShadow(
                               blurRadius: 10.0,
                               color: Colors.black54,
-                              offset: Offset(0, 1),
+                              offset: Offset(0, 8),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(20),

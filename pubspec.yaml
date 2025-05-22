@@ -43,6 +43,7 @@ dependencies:
   dio: ^5.8.0+1
   cached_network_image: ^3.4.1
   pull_down_button: ^0.10.2
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:

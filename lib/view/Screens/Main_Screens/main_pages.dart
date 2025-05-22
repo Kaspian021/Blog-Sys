@@ -57,7 +57,7 @@ class _MainPagesState extends State<MainPages> {
               box: box,
               textstyle: textstyle,
             ),
-            const ArticleScreen(),
+             ArticleScreen(),
             
           ],
         ),

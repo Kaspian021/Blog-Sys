@@ -188,7 +188,7 @@ class HomePage extends StatelessWidget {
                 !controller.isloading.value
                     ? Column(
                       children:
-                          controller.listArticlesNews
+                          controller.listArticlesTopVisited
                               .map(
                                 (f) =>
                                     _buildArticleItem(f, textstyle, sizeBody),

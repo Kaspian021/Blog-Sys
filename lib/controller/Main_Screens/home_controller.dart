@@ -15,6 +15,8 @@ class HomeController extends GetxController {
   RxBool isLogin= false.obs;
   RxList<ModelHomeNewArticles> listArticlesNews= RxList();
 
+  late Iterable<ModelHomeNewArticles> listArticlesTopVisited;
+
   @override
   void onInit() {
     newsArticlesList();
@@ -30,8 +32,11 @@ class HomeController extends GetxController {
 
       for(var element in response.data){
         listArticlesNews.add(ModelHomeNewArticles.fromJson(element));
+
+        
         log(listArticlesNews[0].image!);
       }
+      listArticlesTopVisited= listArticlesNews.where((hop)=> hop.view! >= 2000).toList();
       
     }
     } on DioException catch (e) {
