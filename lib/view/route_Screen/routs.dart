@@ -44,7 +44,7 @@ class Routs {
     GetPage(
       name: RoutsName.routeArticlesList,
       page: () =>  ArticleScreen(),
-      binding: BindProfileScreen(),
+      binding: BindArticleScreen(),
     ),
     GetPage(
       name: RoutsName.routeArticlesSingle,

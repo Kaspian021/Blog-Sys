@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/GitHub_Invertocat_Light.png
+  AssetGenImage get gitHubInvertocatLight =>
+      const AssetGenImage('assets/icons/GitHub_Invertocat_Light.png');
+
   /// File path: assets/icons/Group 175 (1).png
   AssetGenImage get group1751 =>
       const AssetGenImage('assets/icons/Group 175 (1).png');
@@ -34,6 +38,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+    gitHubInvertocatLight,
     group1751,
     menu,
     search,

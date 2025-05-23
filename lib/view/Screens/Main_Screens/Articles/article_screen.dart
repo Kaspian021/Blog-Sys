@@ -1,6 +1,8 @@
 import 'package:blog_sys/component/elements.dart';
 import 'package:blog_sys/component/temps.dart';
+import 'package:blog_sys/controller/Main_Screens/article_controller.dart';
 import 'package:blog_sys/controller/Main_Screens/home_controller.dart';
+import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +11,7 @@ class ArticleScreen extends StatelessWidget {
   ArticleScreen({super.key});
 
   final controller = Get.find<HomeController>();
+  final controllerArticle = Get.find<ArticleController>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,7 @@ class ArticleScreen extends StatelessWidget {
                   itemCount: 10,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, index) {
+                    var item= controller.listArticlesNews;
                     return Padding(
                       padding: EdgeInsets.only(
                         left: sizeBody-10,
@@ -47,77 +51,79 @@ class ArticleScreen extends StatelessWidget {
                       child: Obx(
                         () =>
                             !controller.isloading.value
-                                ? Stack(
-                                  children: [
-                                    Container(
-                                      height: Get.height / 4.5,
-                                      width: Get.width / 1.1,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            blurRadius: 10.0,
-                                            color: Colors.black12,
-                                          ),
-                                        ],
-          
-                                        borderRadius: BorderRadius.circular(20),
+                                ? GestureDetector(
+                                  onTap: () {
+                                    Get.toNamed(RoutsName.routeArticlesSingle,arguments: item[index]);
+                                    controllerArticle.showArticleSingle(item[index].id!);
+                                    
+                                  },
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        height: Get.height / 4.5,
+                                        width: Get.width / 1.1,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 10.0,
+                                              color: Colors.black12,
+                                            ),
+                                          ],
+                                            
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
                                       ),
-                                    ),
-                                    CachedNetworkImage(
-                                      imageBuilder: (context, imageProvider) {
-                                        return Container(
-                                          width: Get.width / 2.7,
-                                          height: Get.height / 4.5,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              20,
-                                            ),
-                                            image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      imageUrl:
-                                          controller
-                                              .listArticlesNews[index]
-                                              .image!,
-                                      errorWidget:
-                                          (context, url, error) =>
-                                              const Icon(Icons.image),
-                                      placeholder: (context, url) => loading(),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomRight,
-                                      child: Column(
-                                        children: [
-                                          const SizedBox(height: 50),
-                                          SizedBox(
-                                            width: Get.width / 2.2,
-          
-                                            child: RichText(
-                                              text: TextSpan(
-                                                text:
-                                                    controller
-                                                        .listArticlesNews[index]
-                                                        .title,
-          
-                                                style: const TextStyle(
-                                                  fontSize: 13,
-                                                  color: Colors.black,
-                                                ),
+                                      CachedNetworkImage(
+                                        imageBuilder: (context, imageProvider) {
+                                          return Container(
+                                            width: Get.width / 2.7,
+                                            height: Get.height / 4.5,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(
+                                                20,
                                               ),
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 3,
-                                              textAlign: TextAlign.right,
+                                              image: DecorationImage(
+                                                image: imageProvider,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          );
+                                        },
+                                        imageUrl:
+                                            item[index].image!,
+                                        errorWidget:
+                                            (context, url, error) =>
+                                                const Icon(Icons.image),
+                                        placeholder: (context, url) => loading(),
                                       ),
-                                    ),
-                                  ],
+                                      Align(
+                                        alignment: Alignment.bottomRight,
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(height: 50),
+                                            SizedBox(
+                                              width: Get.width / 2.2,
+                                            
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  text:item[index].title!,
+                                            
+                                                  style: const TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 3,
+                                                textAlign: TextAlign.right,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 )
                                 : loading(),
                       ),

@@ -8,3 +8,4 @@ Widget loading() {
     duration: Duration(milliseconds: 300),
   );
 }
+

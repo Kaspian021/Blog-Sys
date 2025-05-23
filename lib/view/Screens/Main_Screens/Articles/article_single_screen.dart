@@ -42,11 +42,14 @@ class ArticleSingleScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(Icons.arrow_back_ios_new_rounded),
+                         IconButton( onPressed: () { 
+
+                          Get.back();
+                         }, icon: const Icon(Icons.arrow_back_ios_new_rounded),),
                         PullDownButton(
                           itemBuilder:
                               (context) => [
-                                PullDownMenuItem(onTap: () {}, title: 'copy'),
+                                PullDownMenuItem(onTap: () {}, title: 'copy',),
                               ],
                           buttonBuilder: (context, showMenu) {
                             return IconButton(
@@ -186,7 +189,7 @@ class ArticleSingleScreen extends StatelessWidget {
                             )
                             : loading(),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 100),
                 ],
               ),
             ),

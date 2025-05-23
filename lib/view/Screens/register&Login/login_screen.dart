@@ -1,4 +1,4 @@
-import 'package:blog_sys/controller/Animation_controller/login_animation_screen.dart';
+import 'package:blog_sys/controller/Animation_controller/registerAnimation/login_animation_screen.dart';
 import 'package:blog_sys/controller/Register/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

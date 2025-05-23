@@ -13,6 +13,8 @@ class HomeController extends GetxController {
   RxInt colorIcon= 0.obs;
   RxBool isloading= false.obs;
   RxBool isLogin= false.obs;
+  RxBool isSeller= false.obs;
+  
   RxList<ModelHomeNewArticles> listArticlesNews= RxList();
 
   late Iterable<ModelHomeNewArticles> listArticlesTopVisited;

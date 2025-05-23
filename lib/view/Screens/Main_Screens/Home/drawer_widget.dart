@@ -182,30 +182,28 @@ class _DrawerBlogSysState extends State<DrawerBlogSys>
                 indent: 40,
               ),
               const SizedBox(height: 10),
-              SlideTransition(
-                position: DrawerAnimationHome.animationStartWidget,
-                child: Container(
-                  width: Get.width / 2.1,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.white, blurRadius: 10),
-                    ],
-                    border: Border.all(
-                      color: Colors.blue,
-                      width: 1,
-                      style: BorderStyle.solid,
+              GestureDetector(
+                onTap: () {
+                  //TODO share plus
+                },
+                child: SlideTransition(
+                  position: DrawerAnimationHome.animationStartWidget,
+                  child: Container(
+                    width: Get.width / 2.1,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.white, blurRadius: 10),
+                      ],
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 20),
-                      const Icon(Icons.person, size: 35),
-                      const SizedBox(width: 5),
-                      Text('Support', style: widget.textstyle.bodyLarge),
-                    ],
+                    child: Center(child: Text('Github', style: widget.textstyle.bodyLarge)),
                   ),
                 ),
               ),
@@ -216,31 +214,36 @@ class _DrawerBlogSysState extends State<DrawerBlogSys>
                 indent: 40,
               ),
               const SizedBox(height: 20),
-              SlideTransition(
-                position: DrawerAnimationHome.animationStartWidget,
-                child: Container(
-                  width: Get.width / 2.1,
-                  height: 40,
-                
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: const [
-                      BoxShadow(color: Colors.white, blurRadius: 10),
-                    ],
-                    border: Border.all(
-                      color: Colors.blue,
-                      width: 1,
-                      style: BorderStyle.solid,
+              GestureDetector(
+                onTap: () {
+                  //TODO share plus
+                },
+                child: SlideTransition(
+                  position: DrawerAnimationHome.animationStartWidget,
+                  child: Container(
+                    width: Get.width / 2.1,
+                    height: 40,
+                  
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: const [
+                        BoxShadow(color: Colors.white, blurRadius: 10),
+                      ],
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 1,
+                        style: BorderStyle.solid,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 20),
-                      const Icon(Icons.person, size: 35),
-                      const SizedBox(width: 5),
-                      Text('Support', style: widget.textstyle.bodyLarge),
-                    ],
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 20),
+                        const Icon(Icons.telegram, size: 35),
+                        const SizedBox(width: 5),
+                        Text('Telegram', style: widget.textstyle.bodyLarge),
+                      ],
+                    ),
                   ),
                 ),
               ),

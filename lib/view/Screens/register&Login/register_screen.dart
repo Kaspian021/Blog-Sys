@@ -1,6 +1,6 @@
 
 
-import 'package:blog_sys/controller/Animation_controller/signup_animation_screen.dart';
+import 'package:blog_sys/controller/Animation_controller/registerAnimation/signup_animation_screen.dart';
 import 'package:blog_sys/controller/Register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
