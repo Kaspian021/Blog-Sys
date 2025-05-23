@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-
+  RxInt colorIcon= 0.obs;
   RxBool isloading= false.obs;
   RxBool isLogin= false.obs;
   RxList<ModelHomeNewArticles> listArticlesNews= RxList();

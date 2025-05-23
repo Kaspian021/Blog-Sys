@@ -26,7 +26,7 @@ class ArticleScreen extends StatelessWidget {
                   padding: EdgeInsets.only(left: sizeBody - 10, top: 20),
                   child: Text(
                     'Articles',
-                    style: FontSized.fontTitleArticleScreen,
+                    style: FontSized.fontMedium,
                   ),
                 ),
               ),

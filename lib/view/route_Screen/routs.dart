@@ -1,5 +1,7 @@
-import 'package:blog_sys/controller/Main_Screens/home_controller.dart';
+
 import 'package:blog_sys/controller/bindings.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/Articles/article_screen.dart';
+import 'package:blog_sys/view/Screens/Main_Screens/Articles/article_single_screen.dart';
 import 'package:blog_sys/view/Screens/Main_Screens/main_pages.dart';
 import 'package:blog_sys/view/Screens/Main_Screens/profile_screen.dart';
 import 'package:blog_sys/view/Screens/StartScreens/splash_screen.dart';
@@ -31,13 +33,23 @@ class Routs {
     ),
     GetPage(
       name: RoutsName.routeHomeScreen,
-      page: () =>  const MainPages(),
+      page: () =>   MainPages(),
       binding: BindHomeScreen(),
     ),
     GetPage(
       name: RoutsName.routeProfileScreen,
       page: () =>  ProfileScreen(),
       binding: BindProfileScreen(),
+    ),
+    GetPage(
+      name: RoutsName.routeArticlesList,
+      page: () =>  ArticleScreen(),
+      binding: BindProfileScreen(),
+    ),
+    GetPage(
+      name: RoutsName.routeArticlesSingle,
+      page: () =>  ArticleSingleScreen(),
+      binding: BindArticleScreen(),
     ),
   ];
 }

@@ -22,8 +22,25 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Search.png
   AssetGenImage get search => const AssetGenImage('assets/icons/Search.png');
 
+  /// File path: assets/icons/Vector.png
+  AssetGenImage get vector => const AssetGenImage('assets/icons/Vector.png');
+
+  /// File path: assets/icons/like.png
+  AssetGenImage get like => const AssetGenImage('assets/icons/like.png');
+
+  /// File path: assets/icons/likeback.png
+  AssetGenImage get likeback =>
+      const AssetGenImage('assets/icons/likeback.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [group1751, menu, search];
+  List<AssetGenImage> get values => [
+    group1751,
+    menu,
+    search,
+    vector,
+    like,
+    likeback,
+  ];
 }
 
 class $AssetsImagesGen {

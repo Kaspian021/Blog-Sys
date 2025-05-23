@@ -330,12 +330,6 @@ class _OnboardingPageState extends State<OnboardingPage>
 
     super.deactivate();
   }
-  @override
-  void dispose() {
-    if(OnbordingAnimationScreen.photoAnimationTopLeft.isCompleted){
-      OnbordingAnimationScreen.controller.dispose();
-    }
-    super.dispose();
-  }
+  
   
 }

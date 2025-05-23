@@ -2,26 +2,32 @@
 import 'package:blog_sys/component/elements.dart';
 import 'package:blog_sys/component/service.dart';
 import 'package:blog_sys/component/temps.dart';
+import 'package:blog_sys/controller/Main_Screens/article_controller.dart';
 import 'package:blog_sys/controller/Main_Screens/home_controller.dart';
 import 'package:blog_sys/gen/assets.gen.dart';
+import 'package:blog_sys/view/route_Screen/routs_name.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
+    HomePage({
     super.key,
     required this.sizeBody,
     required this.controller,
     required this.box,
     required this.textstyle,
+
   });
 
   final double sizeBody;
   final HomeController controller;
   final GetStorage box;
   final TextTheme textstyle;
+
+  final controllerArticleSingle= Get.find<ArticleController>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -169,13 +175,16 @@ class HomePage extends StatelessWidget {
                 Expanded(
                   child: Text('Latest News', style: textstyle.headlineMedium),
                 ),
-                const Text(
-                  'More',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.blue,
-                    fontFamily: 'Avenir',
-                    fontWeight: FontWeight.w700,
+                GestureDetector(
+                  onTap: () => controller.colorIcon.value=1,
+                  child: const Text(
+                    'More',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.blue,
+                      fontFamily: 'Avenir',
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ],
@@ -213,65 +222,72 @@ class HomePage extends StatelessWidget {
       child: Obx(
         () =>
             !controller.isloading.value
-                ? Stack(
-                  children: [
-                    Container(
-                      height: Get.height / 4.5,
-                      width: Get.width / 1.2,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: const [
-                          BoxShadow(blurRadius: 10.0, color: Colors.black12),
-                        ],
-
-                        borderRadius: BorderRadius.circular(20),
+                ? GestureDetector(
+                  onTap: () {
+                      //id send article with arguament Articles Single
+                      controllerArticleSingle.showArticleSingle(article.id);
+                      Get.toNamed(RoutsName.routeArticlesSingle,arguments: article);
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: Get.height / 4.5,
+                        width: Get.width / 1.2,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: const [
+                            BoxShadow(blurRadius: 10.0, color: Colors.black12),
+                          ],
+                  
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                       ),
-                    ),
-                    CachedNetworkImage(
-                      imageBuilder: (context, imageProvider) {
-                        return Container(
-                          width: Get.width / 2.7,
-                          height: Get.height / 4.5,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                              image: NetworkImage(article.image),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
-                      },
-                      imageUrl: article.image,
-                      errorWidget:
-                          (context, url, error) => const Icon(Icons.image),
-                      placeholder: (context, url) => loading(),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 50),
-                          SizedBox(
-                            width: Get.width / 2.2,
-
-                            child: RichText(
-                              text: TextSpan(
-                                text: article.title,
-
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.black,
-                                ),
+                      CachedNetworkImage(
+                        imageBuilder: (context, imageProvider) {
+                          return Container(
+                            width: Get.width / 2.7,
+                            height: Get.height / 4.5,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                image: NetworkImage(article.image),
+                                fit: BoxFit.cover,
                               ),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
-                              textAlign: TextAlign.right,
                             ),
-                          ),
-                        ],
+                          );
+                        },
+                        imageUrl: article.image,
+                        errorWidget:
+                            (context, url, error) => const Icon(Icons.image),
+                        placeholder: (context, url) => loading(),
                       ),
-                    ),
-                  ],
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 50),
+                            SizedBox(
+                              width: Get.width / 2.2,
+                  
+                              child: RichText(
+                                text: TextSpan(
+                                  text: article.title,
+                  
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 3,
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 )
                 : loading(),
       ),
